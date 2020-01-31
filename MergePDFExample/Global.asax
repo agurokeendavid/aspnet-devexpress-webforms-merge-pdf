@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="MergePDFExample.Global_asax" Language="C#" %>
