@@ -6,6 +6,11 @@
     <meta charset="UTF-8" />
     <title>DevExpress ASP.NET project</title>
     <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="assets/css/materialize.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css" />
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="/assets/js/materialize.min.js"></script>
+    <asp:ContentPlaceHolder ID="contentplaceholder_MasterRoot_Head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">

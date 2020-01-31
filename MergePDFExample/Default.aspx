@@ -1,105 +1,72 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeBehind="Default.aspx.cs" Inherits="MergePDFExample._Default" %>
 
+
+<asp:Content ID="Content1" ContentPlaceHolderID="contentplaceholder_MasterRoot_Head" runat="server">
+    <script type="text/javascript">
+        function onFileUploadComplete(s, e) {
+            tokenboxAddUploadedAttachment.AddToken(e.callbackData);
+        }
+
+        function onClick(s, e) {
+            if (confirm("Confirm uploading of file? ")) {
+                callbackpanelAdd.PerformCallback();
+            }
+        }
+    </script>
+</asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Get More Help</h2>
-    <p>To help you better use our software, we provide numerous resources describing the best practices for using our controls in real-life applications, as well as different support options to help you solve specific tasks.</p>
-    <p>Please choose an appropriate option from the list below.</p>
+    <dx:ASPxCallbackPanel runat="server" ID="callbackpanelAdd" ClientInstanceName="callbackpanelAdd" OnCallback="callbackpanelAdd_Callback">
+        <PanelCollection>
+            <dx:PanelContent>
+                <dx:ASPxFormLayout runat="server">
+                    <SettingsItemCaptions Location="Top" />
+                    <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" />
+                    <Items>
+                        <dx:LayoutGroup Caption="Add Information">
+                            <Items>
+                                <dx:LayoutItem ShowCaption="False">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                            <dx:ASPxLabel runat="server" ID="labelMessage" Visible="false" />
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                                <dx:LayoutItem Caption="Title">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                            <dx:ASPxTextBox runat="server" ID="textboxTitle" NullText="Please enter title here..." Width="100%" ClientInstanceName="textboxTitle" TabIndex="0" MaxLength="50">
+                                            </dx:ASPxTextBox>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                                <dx:LayoutItem Caption="Attachment" HelpText="Multiple attachments are not allowed.">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer>
+                                            <dx:ASPxTokenBox runat="server" AllowCustomTokens="false" ID="tokenboxAddUploadedAttachment" Width="100%" ClientInstanceName="tokenboxAddUploadedAttachment" TabIndex="1">
+                                            </dx:ASPxTokenBox>
+                                            <dx:ASPxUploadControl runat="server" ShowProgressPanel="true" AutoStartUpload="true" ID="uploadcontrolAddAttachment" Width="100%" TabIndex="2" OnFileUploadComplete="uploadcontrolAddAttachment_FileUploadComplete">
+                                                <AdvancedModeSettings EnableMultiSelect="true" />
+                                                <ClientSideEvents FileUploadComplete="function(s,e) { onFileUploadComplete(s, e); }" />
+                                            </dx:ASPxUploadControl>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                                <dx:LayoutItem ShowCaption="False" HorizontalAlign="Center">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                            <dx:ASPxButton runat="server" Text="Submit" CssClass="btn green darken-1 waves-effect waves-light" TabIndex="3" AutoPostBack="false">
+                                                <ClientSideEvents Click="function (s, e) { onClick(s, e); }" />
 
-    <h3>Overview</h3>
-    <ul>
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Support/Start/#!platform=aspnet">Get Started with DevExpress</a><br/>
-                Choose a platform and view our online tutorials, videos and product documentation.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Support/Demos/#!platform=aspnet">Online Demos</a><br/>
-                Choose a platform and view and/or download all available demos.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="http://www.youtube.com/user/DeveloperExpress/">YouTube Video Channel</a><br/>
-                Subscribe to our video channel to receive first-hand information from DevExpress and explore the featured video content.
-            </p>
-        </li>
-    </ul>
-
-    <h3>Help Resources</h3>
-    <ul>
-        <li>
-            <p>
-                <a href="https://documentation.devexpress.com/#AspNet/CustomDocument7873">Online Documentation</a><br/>
-                Explore the latest edition of the official documentation that is supplied with DevExpress products.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Support/Center/Example/List/">Code Examples</a><br/>
-                Discover hundreds of real-world applications that showcase DevExpress products in various settings and provide robust and reusable code.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="http://search.devexpress.com/">DevExpress Search</a><br/>
-                Rely on a custom search engine to find information about a specific product or technology among varied sources.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Support/Center/">Support Center</a><br/>
-                For direct and urgent assistance, submit an issue in our Support Center or send an e-mail to <a href="mailto:support@devexpress.com">support@devexpress.com</a>.<br/>
-                When reporting a bug, we would greatly appreciate detailed, step-by-step instructions on how to reproduce it, along with a sample project localizing this issue.
-            </p>
-        </li>
-
-    </ul>
-
-    <h3>Advanced Learning</h3>
-    <ul>
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Support/Webinars/">Webinars</a><br/>
-                Join us online and learn more about DevExpress products.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Home/Training/">Classroom Training</a><br/>
-                Check for upcoming workshops scheduled near your location.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/TrainingCenter/">Online Training Center</a><br/>
-                Sign up for our complete online training courses to get the most out of DevExpress products.
-            </p>
-        </li>
-    </ul>
-
-    <h3>Community Resources</h3>
-    <ul>
-        <li>
-            <p>
-                <a href="http://community.devexpress.com/blogs/">Blogs</a><br/>
-                Keep up with industry news and receive the latest information from DevExpress.
-            </p>
-        </li>
-
-        <li>
-            <p>
-                <a href="https://www.devexpress.com/Home/Community/">Events and Tradeshows</a><br/>
-                Join DevExpress at an upcoming industry gathering.
-            </p>
-        </li>
-    </ul>
+                                            </dx:ASPxButton>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                            </Items>
+                        </dx:LayoutGroup>
+                    </Items>
+                </dx:ASPxFormLayout>
+            </dx:PanelContent>
+        </PanelCollection>
+        <ClientSideEvents EndCallback="function(s, e) { onEndCallback(s,e); }" />
+    </dx:ASPxCallbackPanel>
 </asp:Content>

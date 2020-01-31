@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MergePDFExample  {
+namespace MergePDFExample {
     
     
     public partial class SiteMaster {
         
         /// <summary>
-        /// Body control.
+        /// contentplaceholder_MasterRoot_Head control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Body;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentplaceholder_MasterRoot_Head;
         
         /// <summary>
         /// form1 control.
@@ -30,5 +30,22 @@ namespace MergePDFExample  {
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
+        /// <summary>
+        /// HeaderMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMenu HeaderMenu;
+        
+        /// <summary>
+        /// MainContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }
