@@ -1,3 +1,4 @@
+using DevExpress.Pdf;
 using DevExpress.Web;
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -7,6 +8,7 @@ namespace MergePDFExample
 {
     public partial class _Default : System.Web.UI.Page
     {
+        PdfDocumentProcessor pdfDocumentProcessor;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,8 +20,8 @@ namespace MergePDFExample
             {
                 return;
             }
-
-            Session["FILE"] = e.UploadedFile.FileBytes;
+            Session["FILE"] = pdfDocumentProcessor.AppendDocument(e.UploadedFile.FileBytes);
+            //Session["FILE"] = e.UploadedFile.FileBytes;
             Session["FILENAME"] = e.UploadedFile.FileName;
             e.CallbackData = e.UploadedFile.FileName;
         }
